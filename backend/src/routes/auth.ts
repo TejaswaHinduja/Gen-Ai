@@ -1,6 +1,7 @@
 import express from 'express';
 import {Router} from 'express';
 import User from '../models/user';
+import bcrypt from 'bcryptjs';
 
 const router=Router();
 router.post('/signup',async(req,res)=>{
@@ -31,6 +32,7 @@ router.post('/login',async(req,res)=>{
     const checkUser=await User.findOne({username});
     if(!checkUser){
         return res.status(400).json({message:"User not found"});}
+    
     if(checkUser.password!==password){
         return res.status(400).json({message:"Invalid credentials"});
     }
