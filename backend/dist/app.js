@@ -4,12 +4,12 @@ import connectdb from './db.js';
 import { router } from "./routes/auth.js";
 import cookieparser from 'cookie-parser';
 const app = express();
+app.use(express.json());
 app.use(cookieparser());
 app.use(cors({
     origin: "http://localhost:3000",
     credentials: true,
 }));
-app.use(express.json());
 connectdb();
 app.use("/api/auth", router);
 app.listen(3000, () => {

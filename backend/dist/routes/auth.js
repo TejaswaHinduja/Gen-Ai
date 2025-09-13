@@ -13,7 +13,7 @@ router.post('/signup', async (req, res) => {
         username
     });
     const newUser = new User({
-        name: username,
+        username,
         password
     });
     if (newUser) {
