@@ -1,9 +1,10 @@
 import express from 'express';
 import {Router} from 'express';
-import User from '../models/user';
+import User from '../models/user.js';
 import bcrypt from 'bcryptjs';
+import gentoken from '../jwt.js';
 
-const router=Router();
+export const router=Router();
 router.post('/signup',async(req,res)=>{
     const {username,password}=req.body;
     if(!username || !password){
@@ -15,11 +16,12 @@ router.post('/signup',async(req,res)=>{
         username
     })
     const newUser=new User({
-        name:username,
+        username,
         password
     })
     if(newUser){
         await newUser.save();
+        gentoken(newUser._id.toString(),res);
         console.log("User saved to db");
         res.status(201).json({message:"User created successfully"})
     }
@@ -38,3 +40,7 @@ router.post('/login',async(req,res)=>{
     }
     res.status(200).json({message:"Login successful"});
 });
+
+router.get('/dashboard',(req,res)=>{
+
+})

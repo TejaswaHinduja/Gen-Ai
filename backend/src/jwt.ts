@@ -1,5 +1,6 @@
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
+
 dotenv.config();
 
 const jwtsec=process.env.JWT_SECRET;
@@ -7,7 +8,7 @@ export default async function gentoken(userId:String,res:any){
     if(!jwt){
         return;
     }
-    const token=jwt.sign({userId},jwtsec!,{
+    const token=jwt.sign({id:userId},jwtsec!,{
         expiresIn:"7d" 
     });
     res.cookie("token",token,{
