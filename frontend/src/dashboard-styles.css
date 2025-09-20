@@ -1,0 +1,186 @@
+/* src/dashboard-styles.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+:root {
+  --primary-dark: #3B0270;
+  --accent-purple: #6F00FF;
+  --secondary-light: #E9B3FB;
+  --background-offwhite: #FFF1F1;
+  --font-color-light: #333;
+  --font-color-dark: #f0f0f0;
+  --card-shadow-light: 0 10px 30px rgba(0, 0, 0, 0.08);
+  --card-shadow-dark: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+body {
+  background: var(--background-offwhite);
+  color: var(--font-color-light);
+  font-family: 'Poppins', sans-serif;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.main-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.dashboard-card {
+  width: 100%;
+  max-width: 900px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: var(--card-shadow-light);
+  transition: all 0.4s ease;
+  overflow: hidden;
+}
+
+.carousel-section {
+  width: 100%;
+}
+
+.content-section {
+  padding: 2.5rem;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.header-container h3 {
+  font-weight: 600;
+  font-size: 1.8rem;
+}
+
+.input-toggle-container {
+  display: flex;
+  background: var(--secondary-light);
+  border-radius: 15px;
+  padding: 5px;
+  margin-bottom: 1.5rem;
+}
+
+.input-toggle-btn {
+  flex: 1;
+  background-color: transparent;
+  border: none;
+  color: var(--primary-dark);
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.input-toggle-btn.active {
+  background-color: var(--primary-dark);
+  color: var(--background-offwhite);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.input-group {
+  position: relative;
+}
+
+.input-field {
+  width: 100%;
+  padding: 15px 25px;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: #f9f9f9;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: var(--accent-purple);
+  box-shadow: 0 0 0 4px rgba(111, 0, 255, 0.1);
+}
+
+.submit-btn {
+  background: linear-gradient(45deg, var(--accent-purple), #9c00ff);
+  color: var(--background-offwhite);
+  border: none;
+  padding: 12px 30px;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(111, 0, 255, 0.3);
+}
+
+.submit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(111, 0, 255, 0.4);
+}
+
+.result-box {
+  background: linear-gradient(135deg, #f0f0f0, #e8e8e8);
+  border-radius: 15px;
+  padding: 2rem;
+  margin-top: 2rem;
+  border: 1px solid #e0e0e0;
+  min-height: 120px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  transition: all 0.4s ease;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+  background: var(--primary-dark);
+  color: var(--font-color-dark);
+}
+
+body.dark-mode .dashboard-card {
+  background: #1a1a1a;
+  box-shadow: var(--card-shadow-dark);
+}
+
+body.dark-mode .header-container {
+  border-bottom-color: #2a2a2a;
+  color: var(--font-color-dark);
+}
+
+body.dark-mode .input-toggle-container {
+  background: #333;
+}
+
+body.dark-mode .input-toggle-btn {
+  color: var(--font-color-dark);
+}
+
+body.dark-mode .input-toggle-btn.active {
+  background-color: var(--accent-purple);
+  color: #fff;
+}
+
+body.dark-mode .input-field {
+  background: #2a2a2a;
+  border-color: #444;
+  color: var(--font-color-dark);
+}
+
+body.dark-mode .input-field:focus {
+  border-color: var(--accent-purple);
+  box-shadow: 0 0 0 4px rgba(111, 0, 255, 0.2);
+}
+
+body.dark-mode .result-box {
+  background: #222;
+  border-color: #333;
+  color: #ccc;
+  font-style: italic;
+}
