@@ -31,7 +31,7 @@ const FakeNewsDetectorDashboard: React.FC = () => {
     navigate('/logout');
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
     event.preventDefault();
     if (!inputValue) {
       setResult('Please enter a value to check.');
@@ -40,14 +40,30 @@ const FakeNewsDetectorDashboard: React.FC = () => {
     
     setResult('Checking...');
 
-    // Simulate an API call or check
-    setTimeout(() => {
-      if (inputValue.includes('fake')) {
-        setResult(`The entered ${inputType} is likely to be **fake news**.`);
+    try {
+      const response = await fetch('/api/detection/analyze', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ text: inputValue }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        const { isFake, confidence, label } = data.data;
+        const resultText = isFake 
+          ? `The entered ${inputType} is likely to be **fake news** (${label}, confidence: ${confidence}%)`
+          : `The entered ${inputType} appears to be **real news** (${label}, confidence: ${confidence}%)`;
+        setResult(resultText);
       } else {
-        setResult(`The entered ${inputType} appears to be **real news**.`);
+        setResult(`Error: ${data.error || 'Failed to analyze the text'}`);
       }
-    }, 1500); 
+    } catch (error) {
+      console.error('Network error:', error);
+      setResult('An error occurred while checking. Please try again later.');
+    }
   };
 
   return (
