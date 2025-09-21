@@ -73,10 +73,10 @@ const FakeNewsDetectorDashboard: React.FC = () => {
         <div id="carouselExampleFade" className="carousel slide carousel-fade carousel-section">
           <div className="carousel-inner">
             <div className="carousel-item active">
-              <img src="/assets/image.png" className="d-block w-100" style={{ height: '300px', objectFit: 'cover' }} alt="slide 1" />
+              <img src="/image.png" className="d-block w-100" style={{ height: '300px', objectFit: 'cover' }} alt="" />
             </div>
             <div className="carousel-item">
-                <img src="/assets/img2.png" className="d-block w-100" style={{ height: '300px', objectFit: 'cover' }} alt="slide 2" />
+                <img src="/assets/img2.png" className="d-block w-100" style={{ height: '300px', objectFit: 'cover' }} alt="" />
             </div>
           </div>
           <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">

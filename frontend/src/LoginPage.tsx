@@ -17,30 +17,10 @@ const LoginPage: React.FC = () => {
     }
   }, [isDarkMode]);
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-
-    try {
-      const response = await fetch("/api/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        navigate('/dashboard'); 
-      } else {
-        console.error("Login failed:", data.message);
-        alert("Login failed: " + data.message);
-      }
-    } catch (error) {
-      console.error("Network error:", error);
-      alert("An error occurred. Please try again later.");
-    }
+    // Simply redirect to dashboard without any authentication checks
+    navigate('/dashboard');
   };
 
   const toggle = (): void => {

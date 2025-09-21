@@ -12,6 +12,15 @@
   --card-shadow-dark: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
+/* --- Global Styles & Resets --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background: var(--background-offwhite);
   color: var(--font-color-light);
@@ -19,6 +28,7 @@ body {
   transition: background-color 0.4s ease, color 0.4s ease;
 }
 
+/* --- Main Layout --- */
 .main-container {
   min-height: 100vh;
   display: flex;
@@ -32,7 +42,7 @@ body {
   width: 100%;
   max-width: 900px;
   background: #ffffff;
-  border-radius: 20px;
+  border-radius: 1.25rem; /* 20px */
   box-shadow: var(--card-shadow-light);
   transition: all 0.4s ease;
   overflow: hidden;
@@ -46,6 +56,7 @@ body {
   padding: 2.5rem;
 }
 
+/* --- Content Components --- */
 .header-container {
   display: flex;
   justify-content: space-between;
@@ -63,38 +74,39 @@ body {
 .input-toggle-container {
   display: flex;
   background: var(--secondary-light);
-  border-radius: 15px;
-  padding: 5px;
+  border-radius: 1rem; /* 16px */
+  padding: 0.25rem; /* 4px */
   margin-bottom: 1.5rem;
 }
 
 .input-toggle-btn {
   flex: 1;
-  background-color: transparent;
   border: none;
-  color: var(--primary-dark);
-  padding: 10px 20px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border-radius: 12px;
+  background: transparent;
+  padding: 0.625rem 1.25rem; /* 10px 20px */
+  border-radius: 0.75rem; /* 12px */
   font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 .input-toggle-btn.active {
-  background-color: var(--primary-dark);
-  color: var(--background-offwhite);
+  background: var(--accent-purple);
+  color: #fff;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
 .input-group {
   position: relative;
+  margin-bottom: 1.5rem; /* Added margin for spacing */
 }
+
 
 .input-field {
   width: 100%;
-  padding: 15px 25px;
+  padding: 1rem 1.5rem; /* 16px 24px */
   border: 1px solid #ddd;
-  border-radius: 25px;
+  border-radius: 1.5rem; /* 24px */
   font-size: 1rem;
   transition: all 0.3s ease;
   background: #f9f9f9;
@@ -110,8 +122,8 @@ body {
   background: linear-gradient(45deg, var(--accent-purple), #9c00ff);
   color: var(--background-offwhite);
   border: none;
-  padding: 12px 30px;
-  border-radius: 25px;
+  padding: 0.8rem 2rem; /* 12.8px 32px */
+  border-radius: 1.5rem; /* 24px */
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -125,7 +137,7 @@ body {
 
 .result-box {
   background: linear-gradient(135deg, #f0f0f0, #e8e8e8);
-  border-radius: 15px;
+  border-radius: 1rem; /* 16px */
   padding: 2rem;
   margin-top: 2rem;
   border: 1px solid #e0e0e0;
@@ -138,7 +150,7 @@ body {
   color: #555;
 }
 
-/* Dark Mode Styles */
+/* --- Dark Mode Styles --- */
 body.dark-mode {
   background: var(--primary-dark);
   color: var(--font-color-dark);
